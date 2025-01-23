@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Projectile/FPSProjectile.h"
 #include "FPSCharacter.generated.h"
 
 UCLASS()
@@ -30,6 +31,15 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* FPSCameraComponent;
+
+	UPROPERTY(VisibleAnywhere)
+	USkeletalMeshComponent* FPSMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
+	FVector MuzzleOffset;
+
+	UPROPERTY(EditAnywhere = Category = "Projectile")
+	TSubclassOf<class AFPSProjectile> ProjectileClass;
 
 	UFUNCTION()
 	void MoveForward(float value);
