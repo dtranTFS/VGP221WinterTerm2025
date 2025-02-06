@@ -8,7 +8,8 @@ void AFPSHUD::BeginPlay()
 {
 	Super::BeginPlay();
 
-	ShowSettingsMenu();
+	ShowGameMenu(StartingGameWidget);
+	//ShowSettingsMenu();
 }
 
 void AFPSHUD::DrawHUD()
@@ -41,4 +42,17 @@ void AFPSHUD::HideSettingsMenu()
 
 	PlayerOwner->bShowMouseCursor = false;
 	PlayerOwner->SetInputMode(FInputModeGameOnly());
+}
+
+void AFPSHUD::ShowGameMenu(TSubclassOf<UFPSUserWidget> newGameWidget)
+{
+	// Check if a game menu has spawn RemoveFromParent
+	if (GameWidgetContainer) {
+		GameWidgetContainer->RemoveFromParent();
+		GameWidgetContainer = nullptr;
+	}
+
+	// Spawn a newGameWidget and AddToViewport
+	GameWidgetContainer = CreateWidget<UFPSUserWidget>(GetWorld(), newGameWidget);
+	GameWidgetContainer->AddToViewport();
 }

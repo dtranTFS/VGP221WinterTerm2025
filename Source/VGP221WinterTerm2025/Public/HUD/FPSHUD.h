@@ -6,6 +6,7 @@
 #include "GameFramework/HUD.h"
 #include "Engine/Canvas.h"
 #include "GUI/Slate/SSettingsWidget.h"
+#include "GUI/FPSUserWidget.h"
 #include "FPSHUD.generated.h"
 
 /**
@@ -34,5 +35,11 @@ public:
 	void HideSettingsMenu();
 
 	// 3. UMG method for making UI
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UFPSUserWidget> StartingGameWidget;
 
+	UPROPERTY()
+	UFPSUserWidget* GameWidgetContainer;
+
+	void ShowGameMenu(TSubclassOf<UFPSUserWidget> newGameWidget);
 };
