@@ -35,5 +35,5 @@ void UFPSUserWidget::SetText(int amount)
 	if (!ScoreText) return;
 
 	UIScore += amount;
-	ScoreText->SetText(FText::FromString("Score: " + FString::FromInt(amount)));
+	ScoreText->SetText(FText::FromString("Score: " + FString::FromInt(UIScore)));
 }

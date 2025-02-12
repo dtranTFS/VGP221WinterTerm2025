@@ -124,6 +124,24 @@ void AFPSCharacter::Fire()
 	// Launch spawned projectile in the camera rotation
 	FVector LaunchDirection = MuzzleRotation.Vector();
 	Projectile->FireInDirection(LaunchDirection);
+
+	Damage(10);
+}
+
+void AFPSCharacter::Damage(float damageAmt)
+{
+	Health -= damageAmt;
+	float HealthPercent = Health / MaxHealth; // Value betwen 0.0 - 1.0
+
+	// Updating UI
+	// Method 1: Get Actor of class
+	// AHUD* HUD = Cast<AHUD>(UGameplayStatics::GetActorOfClass(GetWorld(), AHUD::StaticClass()));
+	// AFPSHUD* FPSHUD = Cast<AFPSHUD>(HUD);
+	// FPSHUD->GameWidgetContainer->SetHealthBar(HealthPercent);
+
+	// Method 2: Get Player Controller
+	AFPSHUD* FPSHUD = UGameplayStatics::GetPlayerController(this, 0)->GetHUD<AFPSHUD>();
+	FPSHUD->GameWidgetContainer->SetHealthBar(HealthPercent);
 }
 
 

@@ -7,6 +7,9 @@
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Projectile/FPSProjectile.h"
+#include "Kismet/GameplayStatics.h"
+#include "GameFramework/HUD.h"
+#include "HUD/FPSHUD.h"
 #include "FPSCharacter.generated.h"
 
 UCLASS()
@@ -55,4 +58,12 @@ public:
 
 	UFUNCTION()
 	void Fire();
+
+	UFUNCTION()
+	void Damage(float damageAmt);
+
+private:
+	// Temp Health Code: Trying making this a HealthComponent similar to last term
+	float Health = 100.0f;
+	float MaxHealth = 100.0f;
 };
