@@ -3,3 +3,15 @@
 
 #include "Enemy/EnemyAIController.h"
 
+AEnemyAIController::AEnemyAIController()
+{
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+}
+
+void AEnemyAIController::BeginPlay()
+{
+	Super::BeginPlay();
+
+	RunBehaviorTree(StartingBehaviorTree);
+}

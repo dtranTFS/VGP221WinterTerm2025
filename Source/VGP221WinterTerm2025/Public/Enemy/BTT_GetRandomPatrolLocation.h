@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
+#include "NavigationSystem.h"
+#include "Enemy/EnemyAIController.h"
+#include "BehaviorTree/BlackboardComponent.h"
 #include "BTT_GetRandomPatrolLocation.generated.h"
 
 /**
@@ -14,4 +17,8 @@ class VGP221WINTERTERM2025_API UBTT_GetRandomPatrolLocation : public UBTTaskNode
 {
 	GENERATED_BODY()
 	
+public:
+	FVector RandomLocation;
+	UNavigationSystemV1* NavArea;
+	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 };
