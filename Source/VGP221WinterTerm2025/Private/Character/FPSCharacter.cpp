@@ -144,4 +144,12 @@ void AFPSCharacter::Damage(float damageAmt)
 	FPSHUD->GameWidgetContainer->SetHealthBar(HealthPercent);
 }
 
+float AFPSCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	float FinalDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	Damage(FinalDamage);
+
+	return FinalDamage;
+}
+
 

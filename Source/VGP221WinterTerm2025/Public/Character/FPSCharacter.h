@@ -62,6 +62,8 @@ public:
 	UFUNCTION()
 	void Damage(float damageAmt);
 
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+
 private:
 	// Temp Health Code: Trying making this a HealthComponent similar to last term
 	float Health = 100.0f;
